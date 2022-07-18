@@ -1,0 +1,8 @@
+pin assignments
+
+clk = PIN_P11
+vga_h_sync = PIN_N3
+vga_v_sync = PIN_N1
+vga_R = PIN_AA1
+vga_G = PIN_W1
+vga_B = PIN_P1
