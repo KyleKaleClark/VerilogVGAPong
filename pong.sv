@@ -1,6 +1,6 @@
-module pong(input clk, output logic vga_h_sync, vga_v_sync, vga_R, vga_G, vga_B);
+module pong(input clk, output logic vga_h_sync, vga_v_sync, output logic [3:0] vga_Rarray, vga_Garray, vga_Barray);
 	
-	logic border, R, G, B;
+	logic border, R, G, B, vga_R, vga_B, vga_G;
 	logic inDisplayArea;
 	logic [9:0] counterx;
 	logic [8:0] countery;
@@ -21,6 +21,20 @@ module pong(input clk, output logic vga_h_sync, vga_v_sync, vga_R, vga_G, vga_B)
 		vga_G <= G & inDisplayArea;
 		vga_B <= B & inDisplayArea;
 	end
+	assign vga_Rarray[0] = vgaR;
+	assign vga_Rarray[1] = vgaR;
+	assign vga_Rarray[2] = vgaR;
+	assign vga_Rarray[3] = vgaR;
+	assign vga_Barray[0] = vgaB;
+	assign vga_Barray[1] = vgaB;
+	assign vga_Barray[2] = vgaB;
+	assign vga_Barray[3] = vgaB;
+	assign vga_Garray[0] = vgaG;
+	assign vga_Garray[1] = vgaG;
+	assign vga_Garray[2] = vgaG;
+	assign vga_Garray[3] = vgaG;
+	
+	
 endmodule
 
 module vgaSync(input clk, output logic vga_h_sync, vga_v_sync, inDisplayArea);
@@ -74,23 +88,3 @@ module pmcntr #(parameter siz=5) (input clk, reset, input [siz-1:0] count_max, o
 			clkout <= ~clkout;  
 		end 
 endmodule 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
